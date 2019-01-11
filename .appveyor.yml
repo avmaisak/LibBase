@@ -1,0 +1,28 @@
+﻿version: 1.0.{build}
+image: Visual Studio 2017
+skip_branch_with_pr: true
+branches:
+  only:
+    - master
+skip_commits:
+  files:
+  - '**/*.md'
+platform: Any CPU
+services:
+  - mongodb
+build:
+  project: '\src\LibBase.sln'
+  publish_nuget: true
+  parallel: true
+  verbosity: normal
+build_script:
+  - dotnet build src/LibBase.sln -c Release
+artifacts:
+  - path: 'src\LibBase\bin\Release\*.nupkg'
+    name: NuGet Package (Release)
+deploy:
+  provider: NuGet
+  api_key:
+    secure: aqkB1JtbMkc7X/GvoNX5zmX5TUQSsUQ/4L8fUujUJducDenNK8axwRvl89g5oJY3
+  skip_symbols: true
+  artifact: /.*\.nupkg/
