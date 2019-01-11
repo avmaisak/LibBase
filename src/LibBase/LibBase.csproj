@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Shared Library for projects</Description>
+    <Authors>Maisak.AV</Authors>
+    <Copyright>Maisak.AV</Copyright>
+    <PackageLicenseUrl>https://github.com/avmaisak/LibBase/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/avmaisak/LibBase</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/avmaisak/LibBase.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>Lib SharedLib CSharpLib</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+  </ItemGroup>
+
+</Project>
