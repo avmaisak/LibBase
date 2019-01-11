@@ -488,7 +488,6 @@ namespace LibBase.Extensions
 		{
 			return Enum.IsDefined(typeof(T), target) ? (T)Enum.Parse(typeof(T), target, ignoreCase) : defaultValue;
 		}
-
 		public static DateTime? ToDateTimeForce(this string dateTime)
 		{
 
@@ -506,6 +505,22 @@ namespace LibBase.Extensions
 
 				return null;
 			}
+		}
+		public static string[] Split(this string str, string splitter) {
+			return str.Split(new[] { splitter }, StringSplitOptions.None);
+		}
+		public static string TrimString(this string str) {
+			var res = string.Empty;
+
+			if (str == null) {
+				return string.Empty;
+			}
+
+			if (!string.IsNullOrWhiteSpace(str)) {
+				res = str.Trim();
+			}
+
+			return res;
 		}
 	}
 }

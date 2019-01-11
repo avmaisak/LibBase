@@ -10,6 +10,9 @@
     <RepositoryUrl>https://github.com/avmaisak/LibBase.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Lib SharedLib CSharpLib</PackageTags>
+    <Version>1.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
