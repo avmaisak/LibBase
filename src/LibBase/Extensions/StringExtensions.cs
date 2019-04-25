@@ -189,7 +189,7 @@ namespace LibBase.Extensions
 		/// <summary>
 		/// Tries to convert target string to Boolean. If fails returns default value.
 		/// </summary>
-		public static Boolean ParseOrDefault(string target, Boolean defaultValue)
+		public static Boolean ParseOrDefault(string target, bool defaultValue)
 		{
 			Boolean result;
 			var success = Boolean.TryParse(target, out result);
@@ -203,7 +203,7 @@ namespace LibBase.Extensions
 		/// Tries to convert target string to Boolean. If fails returns default value.
 		/// SetPart extended parameter to true to be able to parse from values "0", "1", "Yes", "No".
 		/// </summary>
-		public static Boolean ParseOrDefault(string target, Boolean defaultValue, Boolean extended)
+		public static bool ParseOrDefault(string target, bool defaultValue, bool extended)
 		{
 			Boolean result;
 			var success = Boolean.TryParse(target, out result);
@@ -227,7 +227,7 @@ namespace LibBase.Extensions
 		/// <summary>
 		/// Tries to convert target string to Byte. If fails returns default value.
 		/// </summary>
-		public static Byte ParseOrDefault(string target, Byte defaultValue)
+		public static byte ParseOrDefault(string target, byte defaultValue)
 		{
 			Byte result;
 			var success = Byte.TryParse(target, out result);
@@ -237,7 +237,7 @@ namespace LibBase.Extensions
 		/// <summary>
 		/// Tries to convert target string to Byte. If fails returns default value.
 		/// </summary>
-		public static Byte ParseOrDefault(string target, NumberStyles style, IFormatProvider provider, Byte defaultValue)
+		public static byte ParseOrDefault(string target, NumberStyles style, IFormatProvider provider, byte defaultValue)
 		{
 			Byte result;
 			var success = Byte.TryParse(target, style, provider, out result);
@@ -247,7 +247,7 @@ namespace LibBase.Extensions
 		/// <summary>
 		/// Tries to convert target string to Char. If fails returns default value.
 		/// </summary>
-		public static Char ParseOrDefault(string target, Char defaultValue)
+		public static char ParseOrDefault(string target, char defaultValue)
 		{
 			Char result;
 			var success = Char.TryParse(target, out result);
@@ -277,7 +277,7 @@ namespace LibBase.Extensions
 		/// <summary>
 		/// Tries to convert target string to Decimal. If fails returns default value.
 		/// </summary>
-		public static Decimal ParseOrDefault(string target, Decimal defaultValue)
+		public static decimal ParseOrDefault(string target, decimal defaultValue)
 		{
 			Decimal result;
 			var success = Decimal.TryParse(target, out result);
@@ -287,7 +287,7 @@ namespace LibBase.Extensions
 		/// <summary>
 		/// Tries to convert target string to Decimal. If fails returns default value.
 		/// </summary>
-		public static Decimal ParseOrDefault(string target, NumberStyles style, IFormatProvider provider, Decimal defaultValue)
+		public static decimal ParseOrDefault(string target, NumberStyles style, IFormatProvider provider, decimal defaultValue)
 		{
 			Decimal result;
 			var success = Decimal.TryParse(target, style, provider, out result);
@@ -297,7 +297,7 @@ namespace LibBase.Extensions
 		/// <summary>
 		/// Tries to convert target string to Double. If fails returns default value.
 		/// </summary>
-		public static Double ParseOrDefault(string target, Double defaultValue)
+		public static double ParseOrDefault(string target, double defaultValue)
 		{
 			Double result;
 			var success = Double.TryParse(target, out result);
@@ -307,7 +307,7 @@ namespace LibBase.Extensions
 		/// <summary>
 		/// Tries to convert target string to Double. If fails returns default value.
 		/// </summary>
-		public static Double ParseOrDefault(string target, NumberStyles style, IFormatProvider provider, Double defaultValue)
+		public static double ParseOrDefault(string target, NumberStyles style, IFormatProvider provider, double defaultValue)
 		{
 			Double result;
 			var success = Double.TryParse(target, style, provider, out result);
