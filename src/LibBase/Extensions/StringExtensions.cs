@@ -13,6 +13,11 @@ namespace LibBase.Extensions
 	/// </summary>
 	public static class StringExtensions
 	{
+		public static bool ToBool(this string str, string actual = "yes")
+		{
+			return str == actual;
+		}
+
 		/// <summary>
 		/// Replace a string char at index with another char
 		/// </summary>
