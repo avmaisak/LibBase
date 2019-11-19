@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using LibBase.Struct;
+
 
 namespace LibBase.Utility
 {
@@ -13,10 +13,7 @@ namespace LibBase.Utility
 			// be the same week# as whatever Thursday, Friday or Saturday are,
 			// and we always get those right
 			var day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(time);
-			if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
-			{
-				time = time.AddDays(3);
-			}
+			if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday) time = time.AddDays(3);
 
 			// Return the week of our adjusted day
 			return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
@@ -37,18 +34,15 @@ namespace LibBase.Utility
 		}
 		public static DateTime FirstDateOfWeekIso8601(int year, int weekOfYear)
 		{
-			DateTime jan1 = new DateTime(year, 1, 1);
-			int daysOffset = DayOfWeek.Thursday - jan1.DayOfWeek;
+			var jan1 = new DateTime(year, 1, 1);
+			var daysOffset = DayOfWeek.Thursday - jan1.DayOfWeek;
 
-			DateTime firstThursday = jan1.AddDays(daysOffset);
+			var firstThursday = jan1.AddDays(daysOffset);
 			var cal = CultureInfo.CurrentCulture.Calendar;
-			int firstWeek = cal.GetWeekOfYear(firstThursday, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+			var firstWeek = cal.GetWeekOfYear(firstThursday, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
 
 			var weekNum = weekOfYear;
-			if (firstWeek <= 1)
-			{
-				weekNum -= 1;
-			}
+			if (firstWeek <= 1) weekNum -= 1;
 			var result = firstThursday.AddDays(weekNum * 7);
 			return result.AddDays(-3);
 		}
@@ -75,18 +69,7 @@ namespace LibBase.Utility
 		{
 			return GetWeek(Convert.ToDateTime(dateTime));
 		}
-		public static IEnumerable<Range> GetRange(int year, int month)
-		{
-			var start = new DateTime(year, month, 1).AddDays(-6);
-			var end = new DateTime(year, month, 1).AddMonths(1).AddDays(-1);
-			for (var date = start; date <= end; date = date.AddDays(1))
-			{
-				if (date.DayOfWeek == DayOfWeek.Sunday)
-				{
-					yield return new Range(date);
-				}
-			}
-		}
+		
 		public static DateTime FirstDateOfWeek(int year, int weekOfYear)
 		{
 			var jan1 = new DateTime(year, 1, 1);
