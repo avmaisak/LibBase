@@ -8,4 +8,4 @@ Shared Library for projects
 
 Via Nuget
 
-```Install-Package LibBase -Version 1.0.2```
+```Install-Package LibBase```
