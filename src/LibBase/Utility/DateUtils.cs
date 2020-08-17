@@ -55,10 +55,7 @@ namespace LibBase.Utility
 		public static int TotalWeeksInYear => WeeksInYear();
 		private static int WeeksInYear(int? year = null)
 		{
-			if (year == null)
-			{
-				year = DateTime.Now.Year;
-			}
+			year ??= DateTime.Now.Year;
 
 			var currentDate = new DateTime(Convert.ToInt32(year), 12, 31);
 			var ciCurr = CultureInfo.CurrentCulture;
@@ -69,7 +66,7 @@ namespace LibBase.Utility
 		{
 			return GetWeek(Convert.ToDateTime(dateTime));
 		}
-		
+
 		public static DateTime FirstDateOfWeek(int year, int weekOfYear)
 		{
 			var jan1 = new DateTime(year, 1, 1);
@@ -77,10 +74,7 @@ namespace LibBase.Utility
 			var firstMonday = jan1.AddDays(daysOffset);
 			var firstWeek = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(jan1, CultureInfo.CurrentCulture.DateTimeFormat.CalendarWeekRule, CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek);
 
-			if (firstWeek <= 1)
-			{
-				weekOfYear -= 1;
-			}
+			if (firstWeek <= 1) weekOfYear -= 1;
 
 			return firstMonday.AddDays(weekOfYear * 7);
 		}
@@ -92,26 +86,19 @@ namespace LibBase.Utility
 		public static DateTime StartOfWeek(DateTime dateTime)
 		{
 			var days = dateTime.DayOfWeek - DayOfWeek.Monday;
-
-			if (days < 0)
-				days += 7;
-
+			if (days < 0) days += 7;
 			return dateTime.AddDays(-1 * days).Date;
 		}
 		public static List<DateTime> GetDatesBetween(DateTime startDate, DateTime endDate)
 		{
 			var allDates = new List<DateTime>();
-			for (var date = startDate; date <= endDate; date = date.AddDays(1))
-				allDates.Add(date);
+			for (var date = startDate; date <= endDate; date = date.AddDays(1)) allDates.Add(date);
 			return allDates;
 		}
 		public static List<DateTime> EachDay(DateTime from, DateTime to, int frequencyDays = 1)
 		{
 			var r = new List<DateTime>();
-			for (var day = from.Date; day.Date <= to.Date; day = day.AddDays(frequencyDays))
-			{
-				r.Add(day);
-			}
+			for (var day = from.Date; day.Date <= to.Date; day = day.AddDays(frequencyDays)) r.Add(day);
 			return r;
 		}
 		public static decimal TotalHours(DateTime from, DateTime to)
@@ -119,10 +106,8 @@ namespace LibBase.Utility
 			var r = (to - from).TotalHours;
 			return Convert.ToDecimal(r);
 		}
-		public static string MonthName(int number)
-		{
-			return CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(number);
-		}
+		public static string MonthName(int number) => CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(number);
+		
 		/// <summary>
 		/// Последний день месяца
 		/// </summary>
@@ -136,11 +121,7 @@ namespace LibBase.Utility
 		public static List<DateTime> MonthsList(int year)
 		{
 			var res = new List<DateTime>();
-			for (var i = 1; i < 13; i++)
-			{
-				res.Add(new DateTime(year, i, 1));
-			}
-
+			for (var i = 1; i < 13; i++) res.Add(new DateTime(year, i, 1));
 			return res;
 		}
 	}

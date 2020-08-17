@@ -28,10 +28,7 @@ namespace LibBase.Generators
 		/// Количество столбцов в таблице.
 		/// </summary>
 		private int _columnsTotal;
-		public BaseExcelGenerator()
-		{
-			CreateWorkBook();
-		}
+		public BaseExcelGenerator() => CreateWorkBook();
 		/// <summary>
 		/// Content type for excel files.
 		/// </summary>
@@ -43,7 +40,7 @@ namespace LibBase.Generators
 		/// <summary>
 		/// Страница Excel. Возвращает текущую страницу.
 		/// </summary>
-		public ExcelWorksheet Sheet => _sheet ?? (_sheet = Excel.Workbook.Worksheets.Add("Таблица"));
+		public ExcelWorksheet Sheet => _sheet ??= Excel.Workbook.Worksheets.Add("Таблица");
 		/// <summary>
 		/// Текущая позиция курсора - строка.
 		/// </summary>
@@ -129,10 +126,7 @@ namespace LibBase.Generators
 		/// <summary>
 		/// Implementation of Dispose pattern.
 		/// </summary>
-		public void Dispose()
-		{
-			Dispose(true);
-		}
+		public void Dispose() => Dispose(true);
 
 		/// <summary>
 		/// Implementation of Dispose pattern.
@@ -140,11 +134,9 @@ namespace LibBase.Generators
 		/// <param name="disposing">Признак уничтожения.</param>
 		protected virtual void Dispose(bool disposing)
 		{
-			if (disposing)
-			{
-				Excel?.Dispose();
-				_sheet?.Dispose();
-			}
+			if (!disposing) return;
+			Excel?.Dispose();
+			_sheet?.Dispose();
 		}
 
 		#endregion
